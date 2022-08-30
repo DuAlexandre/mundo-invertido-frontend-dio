@@ -1,4 +1,4 @@
-import { subscribeClub } from "./firebase/hellfire-clube.js";
+import {getHellfireClubSubscription, subscribeClub } from "./firebase/hellfire-clube.js";
 
 const txtName = document.getElementById('txtName');
 const txtEmail = document.getElementById('txtEmail');
@@ -16,5 +16,12 @@ btnSubscribe.addEventListener('click', async () => {
         character: txtCharacter.value
     }
     const subscriptionId = await subscribeClub(subscription);
-    console.log(`Inscrito ${subscriptionId}`);
+    alert(`Inscrito ${subscriptionId} com sucesso!`);
 })
+
+async function loadData () {
+    const subscriptions = await getHellfireClubSubscription()
+    console.log(subscriptions);
+}
+
+loadData();
